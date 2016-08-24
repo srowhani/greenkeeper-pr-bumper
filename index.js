@@ -10,13 +10,13 @@
   handler.on('error', function (err) {
     console.error('Error:', err.message)
   })
+  // /repos/:owner/:repo/pulls/:number
+  handler.on('pull_request', function (event) {
 
-  handler.on('pull_request_review_comment', function (event) {
-
-    var comment = event.payload.comment
-    var url = comment.url
-    var body = comment.body
-    var user = comment.user.login
+    var pull_request = event.payload.pull_request
+    var url = pull_request.url
+    var body = pull_request.body
+    var user = pull_request.user.login
 
     console.log('hit a PR comment from ' + user + 'at ' + url)
 
@@ -29,7 +29,7 @@
           'Authorization': 'token ' + process.env.TOKEN
         },
         data: {
-          body: '#PATCH#' + body
+          body: '#PATCH#\n' + body
         }
       }).then(function (response) {
         console.log(response)
