@@ -26,3 +26,8 @@ handler.on('issues', function (event) {
     event.payload.issue.number,
     event.payload.issue.title)
 })
+
+handler.on('pull_request_review_comment', function (event) {
+  console.log('woo')
+  console.log(event)
+})
