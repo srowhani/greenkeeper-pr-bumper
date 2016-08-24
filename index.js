@@ -12,13 +12,13 @@
   })
   // /repos/:owner/:repo/pulls/:number
   handler.on('pull_request', function (event) {
-
+    console.log('Request Type: ', event.payload.action)
+    if (event.payload.action !== 'opened')
+      return
     var pull_request = event.payload.pull_request
     var url = pull_request.url
     var body = pull_request.body
     var user = pull_request.user.login
-
-    console.log('hit a PR comment from ' + user + 'at ' + url)
 
     if (user === 'greenkeeperio-bot') {
       console.log('Message from greenkeeperio-bot detected')
