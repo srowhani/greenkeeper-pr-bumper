@@ -17,7 +17,7 @@
     var url = comment.url
     var body = comment.body
     var user = comment.user.login
-    
+
     console.log('hit a PR comment from ' + user + 'at ' + url)
 
     if (user === 'greenkeeperio-bot') {
@@ -26,7 +26,7 @@
         url: url,
         method: 'patch',
         headers: {
-          'Authorization: token' + process.env.TOKEN
+          'Authorization': 'token ' + process.env.TOKEN
         },
         data: {
           body: '#PATCH#' + body
