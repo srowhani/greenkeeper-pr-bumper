@@ -22,7 +22,7 @@
 
     if (user === 'greenkeeperio-bot') {
       console.log('Message from greenkeeperio-bot detected')
-      axios.create({
+      axios({
         url: url,
         method: 'patch',
         headers: {
