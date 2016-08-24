@@ -7,7 +7,7 @@ http.createServer(function (req, res) {
     res.statusCode = 404
     res.end('no such location')
   })
-}).listen(3000)
+}).listen(process.env.PORT || 3000)
 
 handler.on('error', function (err) {
   console.error('Error:', err.message)
